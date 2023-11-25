@@ -1,0 +1,19 @@
+management:
+#  endpoint: # ??? ????? enabled ??
+#    health:
+#      enabled: true
+#    beans:
+#      enabled: false
+#    caches:
+#      enabled: true
+#    heapdump:
+#      enabled: true
+  endpoints: # ??? ??? ??
+    web:
+      cors:
+        allowed-origins: http://test.com
+        allowed-methods: GET, POST
+      exposure:
+        include: "*"
+#        exclude:
+#          - beans
