@@ -3,6 +3,7 @@ package io.dongvelop.actuatordemo.custom;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
+import org.springframework.boot.actuate.endpoint.annotation.Selector;
 import org.springframework.boot.actuate.endpoint.annotation.WriteOperation;
 import org.springframework.lang.Nullable;
 
@@ -47,5 +48,17 @@ public class MyLibraryInfoEndpoint {
     public void changeSomething(final String name, final Boolean enableSomething) {
 
         log.info("name[{}], enableSomething[{}]", name, enableSomething);
+    }
+
+    /**
+     * /actuator/myLibraryInfo/{path} 와 같은 동작
+     * @Selector 기본 동작은 MATCH.SINGLE (단일 path 값만 받음)
+     * 여러 path variable을 받고 싶을 경우 ALL_REMAINING로 설정
+     */
+    @ReadOperation
+    public String getPathVariable(@Selector(match = Selector.Match.ALL_REMAINING) final String... path) {
+
+        log.info("path[{}]", Arrays.asList(path));
+        return "path : " + Arrays.asList(path);
     }
 }
