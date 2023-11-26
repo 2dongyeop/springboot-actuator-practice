@@ -1,8 +1,8 @@
 management:
-#  endpoint: # ??? ????? enabled ??
-#    health:
-#      enabled: true
-#    beans:
+  endpoint: # ??? ????? enabled ??
+    health:
+      show-details: always
+  #    beans:
 #      enabled: false
 #    caches:
 #      enabled: true

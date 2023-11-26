@@ -5,13 +5,15 @@ import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.boot.actuate.endpoint.annotation.Selector;
 import org.springframework.boot.actuate.endpoint.annotation.WriteOperation;
+import org.springframework.boot.actuate.endpoint.web.annotation.WebEndpoint;
 import org.springframework.lang.Nullable;
 
 import java.util.Arrays;
 import java.util.List;
 
 @Slf4j
-@Endpoint(id = "myLibraryInfo")
+//@Endpoint(id = "myLibraryInfo") // wen & jmx를 모두 지원
+@WebEndpoint(id = "myLibraryInfo")
 public class MyLibraryInfoEndpoint {
 
     /**
