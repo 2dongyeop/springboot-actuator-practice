@@ -1,12 +1,15 @@
 package io.dongvelop.actuatordemo.custom;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
+import org.springframework.boot.actuate.endpoint.annotation.WriteOperation;
 import org.springframework.lang.Nullable;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Slf4j
 @Endpoint(id = "myLibraryInfo")
 public class MyLibraryInfoEndpoint {
 
@@ -34,5 +37,15 @@ public class MyLibraryInfoEndpoint {
         }
 
         return libraryInfos;
+    }
+
+    /**
+     * Request Body로 POST 요청 받았을 때 동작.
+     * @Endpoint에서는 DTO 같은 객체를 받을 수 없어서 아래와 같이 필요한 속성들을 하나씩 나열해야함
+     */
+    @WriteOperation
+    public void changeSomething(final String name, final Boolean enableSomething) {
+
+        log.info("name[{}], enableSomething[{}]", name, enableSomething);
     }
 }
